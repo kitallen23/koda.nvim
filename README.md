@@ -6,7 +6,7 @@ Because I cannot stand the [Christmas lights galore](https://tonsky.me/blog/synt
 Supports a few plugins, currently the ones I use, maybe will add support for more later if I find it necessary. 
 
 Your mileage may vary depending on the quality of the screen you use. 
-<img width="1355" height="796" alt="image" src="https://github.com/user-attachments/assets/987fd48f-d7a1-4d5e-8f1d-89e483c88eff" />
+<img width="1510" height="835" alt="image" src="https://github.com/user-attachments/assets/90b7fada-694b-479e-a69c-7b4761b42d7f" />
 
 ## Installation
 
