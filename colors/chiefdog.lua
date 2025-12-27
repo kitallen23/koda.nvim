@@ -6,6 +6,7 @@ end
 vim.g.colors_name = "chiefdog"
 local utils = require("chiefdog.utils")
 
+-- TODO: add lightheme
 -- stylua: ignore
 local c = {
   transparent = "none",
@@ -181,7 +182,10 @@ local groups = {
   MiniPickMatchRanges = { fg = c.constant },
 
   -- Oil
-  OilCreate = { fg = c.add }
+  OilCreate = { fg = c.add },
+
+  -- Snacks
+  SnacksPickerDir = { fg = c.keyword },
 
 }
 
