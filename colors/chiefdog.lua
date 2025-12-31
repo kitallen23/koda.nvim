@@ -188,6 +188,7 @@ local groups = {
 
   -- Snacks
   SnacksPickerDir = { fg = c.keyword },
+  SnacksPickerMatch = { fg = c.constant },
 }
 
 for group, hl in pairs(groups) do
