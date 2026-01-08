@@ -41,12 +41,15 @@ vim.cmd("colorscheme koda")
 > [!IMPORTANT]
 > Set the configuration **BEFORE** calling `vim.cmd("colorscheme koda")`.
 
+> Because the theme uses the same background for pop-up menus and floating windows, I recommend setting both `winborder` and `pumborder` to _at least_ "single" in your configs.
+
+
 <details>
   <summary>Default Options</summary>
   
 ```lua
 require("koda").setup({
-    bold = true           -- disable bold for functions and keywords
+    bold = true,          -- disable bold for functions and keywords
     italic = false,       -- enable italics for comments and strings
     transparent = false,  -- enable for transparent backgrounds
 
@@ -83,17 +86,18 @@ require("koda").setup({
   <summary>Settings & Changing Colors</summary>
 
 ```lua
-  require("koda").setup({
+require("koda").setup({
   bold = false,
   -- For example, add more colors to the theme by changing `func` and `keyword` colors:
   colors = {
     func = "#4078F2",
-    keyword = "#A627A4"
+    keyword = "#A627A4",
   },
 })
 ```
 
 </details>
+
 
 ## Plugin support
 **NOTE:** I only took the effort to make adjustments for a few plugins. I don't use many, so I am out of touch. Open an issue if something is severely off.
