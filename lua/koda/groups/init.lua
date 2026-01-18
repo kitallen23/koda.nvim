@@ -43,15 +43,15 @@ function M.setup(colors, opts)
     lsp = true,
   }
 
-  -- Load highlights for plugins, either all or only active ones
-  -- managed by lazy.nvim or vim.pack
+  -- Load highlights only for plugins managed by plugin managers
+  -- Currently only supports lazy.nvim and vim.pack
+  -- Can set `opts.auto=false` to load all highlights as a fallback
   if not opts.auto then
     for _, group in pairs(M.plugins) do
       groups[group] = true
     end
   elseif opts.auto then
-    -- lazy.nvim
-    if package.loaded.lazy then
+    if package.loaded.lazy then -- try lazy.nvim
       local lazy_plugins = require("lazy.core.config").plugins
       for plugin, group in pairs(M.plugins) do
         if lazy_plugins[plugin] then
@@ -59,19 +59,13 @@ function M.setup(colors, opts)
         end
       end
     end
-    -- vim.pack
-    local packdata
-    if vim.pack then
-      local ok, data = pcall(vim.pack.get)
-      if ok then
-        packdata = data
-      end
-    end
-
-    if packdata then
-      for _, plugin in ipairs(packdata) do
-        if plugin.active and M.plugins[plugin.spec.name] then
-          groups[M.plugins[plugin.spec.name]] = true
+    if vim.pack then -- try vim.pack
+      local ok, packdata = pcall(vim.pack.get, nil, { info = false })
+      if ok and packdata then
+        for _, plugin in ipairs(packdata) do
+          if plugin.active and M.plugins[plugin.spec.name] then
+            groups[M.plugins[plugin.spec.name]] = true
+          end
         end
       end
     end
@@ -110,7 +104,7 @@ function M.setup(colors, opts)
     end
   end
 
-  return hl
+  return hl, groups
 end
 
 return M
