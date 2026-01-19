@@ -12,11 +12,17 @@ local palette = {
   func        = "#ffffff",
   string      = "#ffffff",
   const       = "#d9ba73",
-  highlight   = "#0058d0",
+  highlight   = "#458ee6",
   info        = "#8ebeec",
   success     = "#86cd82",
   warning     = "#d9ba73",
   danger      = "#ff7676",
+  green       = "#14ba19",
+  orange      = "#f54d27",
+  red         = "#701516",
+  yellow      = "#d0bf41",
+  pink        = "#f2a4db",
+  cyan        = "#5abfb5",
 }
 
 return palette
