@@ -3,7 +3,7 @@
 
 local M = {}
 M.cache = {}
-local uv = vim.uv or vim.loop
+local uv = vim.uv or vim.loop -- TODO: don't support vim.loop
 
 -- Get the root of the lua directory
 local root = debug.getinfo(1, "S").source:sub(2)

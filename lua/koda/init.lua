@@ -10,6 +10,7 @@ function M.setup(opts)
   end, {})
 end
 
+-- TODO: look into a better solution
 -- Reload the colorscheme when the background changes
 -- HACK: we keep track of 'old_bg' and 'new_bg' to prevent the colorscheme reloading twice during startup
 local old_bg = vim.o.background
