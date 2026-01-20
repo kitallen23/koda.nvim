@@ -12,8 +12,9 @@
 
 ## Features
 
-- Minimalist design, easy on the eyes while providing a clear semantic distinction.
-- Blazingly fast, automatically loads highlights only for the plugins you use
+- **Minimalist design**: easy on the eyes while providing a clear semantic distinction.
+- **Fast**: caches the theme for blazingly fast startup times.
+- **Lean**: skips highlights for plugins that aren't installed.
 - Supports stable and the latest [Neovim 0.12](https://neovim.io/roadmap/) features.
 
 <details>
