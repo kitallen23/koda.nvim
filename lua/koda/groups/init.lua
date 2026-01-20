@@ -1,6 +1,3 @@
---- Parts of this file are adapted from: https://github.com/folke/tokyonight.nvim
---- Licensed under the Apache License, Version 2.0
-
 local utils = require("koda.utils")
 
 local M = {}
@@ -29,8 +26,7 @@ M.plugins = {
 ---@param opts koda.Config
 ---@return koda.Highlights
 function M.get_highlights(name, colors, opts)
-  local group = utils.smart_require("koda.groups." .. name) -- TODO: remove this someday
-  return group.get_hl(colors, opts)
+  return require("koda.groups." .. name).get_hl(colors, opts)
 end
 
 ---@param colors koda.Palette

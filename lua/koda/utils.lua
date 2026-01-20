@@ -1,28 +1,5 @@
---- Parts of this file are adapted from: https://github.com/folke/tokyonight.nvim
---- Licensed under the Apache License, Version 2.0
-
 local M = {}
 M.cache = {}
-local uv = vim.uv or vim.loop -- TODO: don't support vim.loop
-
--- Get the root of the lua directory
-local root = debug.getinfo(1, "S").source:sub(2)
-root = vim.fn.fnamemodify(root, ":h:h") -- "/path/to/nvim/lua"
-
---- Like 'require', but skips searching Neovim's runtimepath if no module found
---- using the root path instead
----@param modname string
----@return table
-function M.smart_require(modname)
-  if package.loaded[modname] then
-    return package.loaded[modname]
-  end
-  -- Convert dot notation to file path, e.g., "koda.groups.base" -> "koda/groups/base.lua"
-  local file = root .. "/" .. modname:gsub("%.", "/") .. ".lua"
-  local result = loadfile(file)() -- load and execute the file
-  package.loaded[modname] = result -- manually cache the result
-  return result
-end
 
 --- Reads the given file and returns its contents
 ---@param fname string
@@ -38,7 +15,7 @@ end
 ---@param fname string
 ---@param data string
 function M.write(fname, data)
-  vim.fn.mkdir(vim.fn.fnamemodify(fname, ":h"), "p")
+  vim.fn.mkdir(vim.fs.dirname(fname), "p")
   local file = assert(io.open(fname, "w+"))
   file:write(data)
   file:close()
@@ -48,17 +25,19 @@ end
 ---@param key string
 ---@return string
 function M.cache.file(key)
-  return vim.fn.stdpath("cache") .. "/koda-" .. key .. ".json"
+  return vim.fs.joinpath(vim.fn.stdpath("cache"), "koda-" .. key .. ".json")
 end
 
 --- Safely read and decode the cached file from disk
 ---@param key string
 ---@return koda.Cache|nil
 function M.cache.read(key)
-  local ok, data = pcall(function()
-    return vim.json.decode(M.read(M.cache.file(key)), { luanil = { object = true, array = true } })
-  end)
-  return ok and data or nil
+  local ok, data = pcall(M.read, M.cache.file(key))
+  if not ok then
+    return nil
+  end
+  local is_ok, ret = pcall(vim.json.decode, data, { luanil = { object = true, array = true } })
+  return is_ok and ret or nil
 end
 
 --- Encodes and writes data to the cached directory
@@ -71,7 +50,7 @@ end
 --- Deletes Koda's cache files from the system
 function M.cache.clear()
   for _, style in ipairs({ "dark", "light" }) do
-    uv.fs_unlink(M.cache.file(style))
+    vim.uv.fs_unlink(M.cache.file(style))
   end
 end
 
