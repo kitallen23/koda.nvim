@@ -1,0 +1,57 @@
+[delta "koda-light"]
+    blame-palette = "#faf9f5 #f0efe8 #ebebeb #d9d9d9 #c9c9c9"
+    commit-decoration-style = "#969ba5" bold box ul
+    light = true
+    file-decoration-style = "#969ba5"
+    file-style = "#101010"
+    hunk-header-decoration-style = "#969ba5" box ul
+    hunk-header-file-style = bold
+    hunk-header-line-number-style = bold "#3d3d3d"
+    hunk-header-style = file line-number syntax
+    line-numbers-left-style = "#969ba5"
+    line-numbers-minus-style = bold "#ca0043"
+    line-numbers-plus-style = bold "#407f00"
+    line-numbers-right-style = "#969ba5"
+    line-numbers-zero-style = "#969ba5"
+    # 25% red 75% base
+    minus-emph-style = bold syntax "#f0d5dd"
+    # 10% red 90% base
+    minus-style = syntax "#f7e8ec"
+    # 25% green 75% base
+    plus-emph-style = bold syntax "#d5edd5"
+    # 10% green 90% base
+    plus-style = syntax "#e8f5e8"
+    map-styles = \
+        bold purple => syntax "#f0e5f7", \
+        bold blue => syntax "#d9ebff", \
+        bold cyan => syntax "#d9f2f0", \
+        bold yellow => syntax "#f7edd9"
+
+[delta "koda-dark"]
+    blame-palette = "#101010 #1a1a1a #272727 #3d3d3d #4d4d4d"
+    commit-decoration-style = "#777777" bold box ul
+    dark = true
+    file-decoration-style = "#777777"
+    file-style = "#b0b0b0"
+    hunk-header-decoration-style = "#777777" box ul
+    hunk-header-file-style = bold
+    hunk-header-line-number-style = bold "#b0b0b0"
+    hunk-header-style = file line-number syntax
+    line-numbers-left-style = "#777777"
+    line-numbers-minus-style = bold "#ff7676"
+    line-numbers-plus-style = bold "#86cd82"
+    line-numbers-right-style = "#777777"
+    line-numbers-zero-style = "#777777"
+    # 25% red 75% base
+    minus-emph-style = bold syntax "#4a2020"
+    # 10% red 90% base
+    minus-style = syntax "#2a1515"
+    # 25% green 75% base
+    plus-emph-style = bold syntax "#204a25"
+    # 10% green 90% base
+    plus-style = syntax "#152a1a"
+    map-styles = \
+        bold purple => syntax "#3a2a4a", \
+        bold blue => syntax "#2a3a5a", \
+        bold cyan => syntax "#2a4a4a", \
+        bold yellow => syntax "#4a4a2a"
